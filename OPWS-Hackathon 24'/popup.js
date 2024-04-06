@@ -1,3 +1,33 @@
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('showSignUp').addEventListener('click', () => {
+        document.getElementById('signInContainer').style.display = 'none';
+        document.getElementById('signUpContainer').style.display = 'block';
+    });
+
+    document.getElementById('showSignIn').addEventListener('click', () => {
+        document.getElementById('signUpContainer').style.display = 'none';
+        document.getElementById('signInContainer').style.display = 'block';
+    });
+
+    document.getElementById('signInForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        signIn();
+    });
+
+    document.getElementById('signupForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        signUp();
+    });
+});
+
+async function signIn() {
+    const email = document.getElementById('signInEmail').value;
+    const password = document.getElementById('signInPassword').value;
+    // Implement your signIn logic here
+    console.log('Sign-in logic to be implemented');
+}
+
 async function signUp() {
     const email = document.getElementById('signUpEmail').value;
     const password = document.getElementById('signUpPassword').value; // Reminder: Storing plain-text passwords is unsafe
@@ -15,7 +45,7 @@ async function signUp() {
                 'api-key': apiKey,
             },
             body: JSON.stringify({
-                dataSource: 'project0',
+                dataSource: 'PROJECT 0',
                 database: 'OWPS',
                 collection: 'username',
                 document: { email, password } // Example document structure
@@ -33,28 +63,4 @@ async function signUp() {
         console.error('Error during sign-up:', error);
         // User feedback for failure
     }
-}
-
-document.getElementById('signUpBtn').addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent form from submitting
-    console.log('Sign-up button clicked');
-    // signUp(); // Temporarily commented out
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Other initialization code...
-
-    // Use 'submit' event for the form for better semantics and accessibility
-    document.getElementById('signUpForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent the default form submission behavior
-        signUp(); // Call your signUp function
-    });
-});
-
-// Ensure this function is correctly defined
-function signUp() {
-    const email = document.getElementById('signUpEmail').value;
-    const password = document.getElementById('signUpPassword').value;
-    // Your fetch request or other sign-up logic here...
-    console.log('Attempting to sign up with:', email, password);
 }

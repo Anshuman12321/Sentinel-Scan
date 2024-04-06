@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+    background-color: #757373;
+}
+
+h2 {
+    color: #ffffff;
+    font-size: 16px;
+}
+
+input[type="email"], input[type="password"] {
+    width: calc(200% - 22px); /* Full width minus padding */
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensures padding does not increase the width */
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#signUpContainer, #signInContainer {
+    background-color: #4d4d4d;
+    padding: 60px;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+p {
+    font-size: 14px;
+}
+
+div.question {
+    margin-bottom: 15px;
+}
+
+/* Toggle between sign in and sign up forms */
+#showSignUp, #showSignIn {
+    background: none;
+    color: #007bff;
+    padding: 0;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#showSignUp:hover, #showSignIn:hover {
+    text-decoration: underline;
+}

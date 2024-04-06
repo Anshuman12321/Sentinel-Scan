@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Questionnaire</title>
+    <link rel="stylesheet" type="text/css" href="popup.css">
+</head>
+<body>
+    <h1>User Questionnaire</h1>
+    <form id="questionnaireForm">
+        <div class="question"> <!-- Major? -->
+            <label for="majorField">What is your major field of study?</label>
+            <input type="text" id="majorField" name="majorField" required>
+        </div>
+        
+        <div class="question"> <!-- Level of study? -->
+            <label for="studyLevel">Your level of study:</label>
+            <select id="studyLevel" name="studyLevel">
+                <option value="undergraduate">Undergraduate</option>
+                <option value="graduate">Graduate</option>
+                <option value="postgraduate">Postgraduate</option>
+            </select>
+        </div>
+        
+        <div class="question"> <!-- What type of content are you looking for? -->
+            <p>Preferred study resources:</p>
+            <input type="checkbox" id="resource1" name="resources" value="video">
+            <label for="resource1">Video tutorials</label><br>
+            <input type="checkbox" id="resource2" name="resources" value="articles">
+            <label for="resource2">Articles</label><br>
+            <input type="checkbox" id="resource3" name="resources" value="ebooks">
+            <label for="resource3">E-books</label>
+        </div>
+        
+        <div class="question"> <!-- Time of Study? -->
+            <p>Preferred study time:</p>
+            <input type="radio" id="morning" name="studyTime" value="morning">
+            <label for="morning">Morning</label><br>
+            <input type="radio" id="afternoon" name="studyTime" value="afternoon">
+            <label for="afternoon">Afternoon</label><br>
+            <input type="radio" id="evening" name="studyTime" value="evening">
+            <label for="evening">Evening</label>
+        </div>
+        
+        <button type="submit">Submit</button>
+    </form>
+    
+    <script src="popup.js"></script> <!-- Link to your JS file to handle the form submission -->
+</body>
+</html>

@@ -18,7 +18,6 @@ def analyze():
             'HTTP_Methods': methods,
             'Email_Exposure': e_exposure
         }
-    # Construct and send the response
     response_data = {
         'status': 'success',
         'website_url': website_url,

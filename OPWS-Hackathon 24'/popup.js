@@ -1,15 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    checkSignInStatus();
+    initializePopup();
 
-    document.getElementById('showSignUp').addEventListener('click', () => {
-        document.getElementById('signInContainer').style.display = 'none';
-        document.getElementById('signUpContainer').style.display = 'block';
-    });
-
-    document.getElementById('showSignIn').addEventListener('click', () => {
-        document.getElementById('signUpContainer').style.display = 'none';
-        document.getElementById('signInContainer').style.display = 'block';
-    });
+    document.getElementById('showSignUp').addEventListener('click', () => switchToContainer('signUpContainer'));
+    document.getElementById('showSignIn').addEventListener('click', () => switchToContainer('signInContainer'));
 
     document.getElementById('signInForm').addEventListener('submit', function(event) {
         event.preventDefault();
@@ -21,15 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
         signUp();
     });
 
-    document.getElementById('submit').addEventListener('click', () => {
-        document.getElementById('questionnaireContainer').style.display = 'none';
-        document.getElementById('status').style.display = 'block';
-    });
-
-    document.getElementById('edit').addEventListener('click', () => {
-        document.getElementById('status').style.display = 'none';
-        document.getElementById('questionnaireContainer').style.display = 'block';
-    });
+    document.getElementById('submit').addEventListener('click', () => switchToContainer('status'));
+    document.getElementById('edit').addEventListener('click', () => switchToContainer('questionnaireContainer'));
 
     document.getElementById('questionnaireForm').addEventListener('submit', function(event) {
         event.preventDefault();
@@ -37,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         chrome.storage.local.get(['userEmail'], function(result) {
             if (result.userEmail) {
                 saveQuestionnaire(result.userEmail);
+                switchToContainer('status'); // Assuming you want to switch to the status container after saving
             } else {
                 console.error('User email not found.');
             }
@@ -44,28 +31,24 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// signIn, signUp, saveQuestionnaire functions remain unchanged
+function switchToContainer(containerId) {
+    let containers = ['signInContainer', 'signUpContainer', 'questionnaireContainer', 'status'];
+    containers.forEach(id => {
+        document.getElementById(id).style.display = 'none';
+    });
+    document.getElementById(containerId).style.display = 'block';
+    chrome.storage.local.set({currentContainer: containerId});
+}
 
-function checkSignInStatus() {
-    chrome.storage.local.get(['userEmail'], function(result) {
-        if (result.userEmail) {
-            console.log('User is signed in with email:', result.userEmail);
-            onLoginSuccess();
+function initializePopup() {
+    // Restore the container state
+    chrome.storage.local.get(['currentContainer'], function(result) {
+        if (result.currentContainer) {
+            switchToContainer(result.currentContainer);
         } else {
-            console.log('User is not signed in.');
-            onloginfailure();
+            // default state
+            switchToContainer('signInContainer');
         }
     });
-}
-
-async function onloginfailure() {
-    document.getElementById('signInContainer').style.display = 'block';
-    document.getElementById('signUpContainer').style.display = 'none';
-    document.getElementById('questionnaireContainer').style.display = 'none';
-}
-
-async function onLoginSuccess() {
-    document.getElementById('signInContainer').style.display = 'none';
-    document.getElementById('signUpContainer').style.display = 'none';
-    document.getElementById('questionnaireContainer').style.display = 'block';
+    // Additional restoration of state (e.g., form inputs) goes here
 }

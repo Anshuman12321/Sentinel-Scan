@@ -20,6 +20,15 @@ input[type="email"], input[type="password"] {
     border-radius: 4px;
     box-sizing: border-box - 10px; /* Ensures padding does not increase the width */
 }
+select[id="studytype"], select[id="major"], select[id="studylevel"], select[id="content"] {
+    width: calc(100% - 22px); /* Full width minus padding */
+    padding: 5px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box - 10px; /* Ensures padding does not increase the width */
+}
 
 button {
     background-color: #007bff;
@@ -35,7 +44,7 @@ button:hover {
     background-color: #0056b3;
 }
 
-#signUpContainer, #signInContainer {
+#signUpContainer, #signInContainer, #questionnaire, #status {
     background-color: #3c3a3a;
     padding: 60px;
     padding-top: 0px;

@@ -10,7 +10,14 @@ def analyze():
         return jsonify({'error': 'Missing website_url'}), 400
 
     website_url = request.json[window.location.href]
-  
+    
+  vulnerabilities_data: {
+            'SSL_Config_Errors': config_errors,
+            'Server_Version': server_version,
+            'Info_Exposure': i_exposure,
+            'HTTP_Methods': methods,
+            'Email_Exposure': e_exposure
+        }
     # Construct and send the response
     response_data = {
         'status': 'success',

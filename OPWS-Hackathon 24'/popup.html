@@ -14,8 +14,9 @@
     <div id="iconContainer">
         <img src="sentinelscan.png" alt="Icon" id="iconImage">
     </div>
+
     <div id="signInContainer">
-        
+            <!-- SIGN IN -->
         <h2>Sign In</h2>
         <form id="signInForm">
             <input type="email" id="signInEmail" placeholder="Email">
@@ -25,6 +26,8 @@
         <p>Don't have an account? <button id="showSignUp">Sign Up</button></p>
     </div>
 
+
+            <!-- SIGN UP -->
     <div id="signUpContainer" style="display: none;">
         <h2>Sign Up</h2>
         <form id="signupForm">
@@ -33,6 +36,64 @@
             <button id="signUpBtn">Sign Up</button>
         </form>
         <p>Already have an account? <button id="showSignIn">Sign In</button></p>
+    </div>
+
+
+        <!-- QUESTIONNAIRE -->
+    <div id= "questionnaire" style="display: none;">
+        <h1>User Optimized Engine</h1>
+        <form id="questionnaire">
+            <!-- Personal or Work related -->
+            <div class="question">
+                <label for="studytype">Work or Personal: </label>
+                <select name="wop" id="studytype">
+                    <option value="work">Work</option>
+                    <option value="personal">Personal</option>
+                </select>
+            </div>
+
+            <!-- Major Field of Study -->
+            <div class="question">
+                <label for="major">What is your major field of study:</label>
+                <select name="fieldofstudy" id="major">
+                    <option value="stem">Science, Technology, Engineering, Mathematics</option>
+                    <option value="hass">Humanities and Social Sciences</option>
+                    <option value="bae">Business and Economics</option>
+                    <option value="paas">Professional and Applied Studies</option>
+                </select>
+            </div>
+        
+            <!-- Level of Study -->
+            <div class="question">
+                <label for="studyLevel">Your level of study:</label>
+                <select name="level" id="studylevel">
+                    <option value="under">Undergraduate</option>
+                    <option value="post">Post-Graduate</option>
+                    <option value="phd">PhD</option>
+                </select>
+            </div>
+
+            <!-- Bias or Unbias Sources -->
+            <div class="question">
+                <label for="contenttype">Bias or Unbias Content Consumption: </label>
+                    <select name="bias" id="content">
+                        <option value="bias">Bias</option>
+                        <option value="unbias">Unbias</option>
+                    </select>
+            </div>
+            <button type="submit", id="submit">Submit</button>
+        </form>
+    <!-- <script src="OWPS.js"></script> Link to your JS file to handle the form submission -->
+    </div>
+
+
+        <!-- CURRENT STATUS -->
+    <div id="status" style="display: none;">
+        <h2>Current Status</h2>
+        <div>
+            <label for="danger">Danger Level</label>
+            <button type="edit", id="edit">Edit Profile</button>
+        </div>
     </div>
 </body>
 </html>

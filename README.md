@@ -5,4 +5,10 @@ An advanced, AI-powered website vulnerability assessment tool, all in a compact 
 
 ## How did we make it?
 
-There were several steps involved with making this. On the back-end side, we had to create, train, and test a neural network that took in data from dozens of websites, sketchy and secure, to train the pattern recognition system to a high degree of accuracy. Alongside this, we code a flask local server to host our back-end code, and with some sweet API work, interfaced it with the front-end browser extension.
+We utilized code for front and back ends, then used APIs to connect them together, all while following US Cyber Laws.
+
+## OPWS
+This folder is the main front end of Sentinel Scan which includes the JSON, HTML, CSS, and JavaScript files for the Google Plugin/Extension that works with the neural network and bash script by taking in their output through a flask server.
+
+## The Back-End Code
+This code that isn't in the folder comprises of all the code used in the back-end development. This includes the bash and python files used to generate and train the neural network, the .h5 file, which is the fully trained NN with 94% accuracy, the back-end flask server files, and the .csv file, which contains the extracted data from the websites used in training the AI

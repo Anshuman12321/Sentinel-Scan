@@ -4,7 +4,6 @@ from tensorflow.keras.models import load_model
 
 app = Flask(__name__)
 
-# Load TensorFlow model
 model = load_model('/mnt/c/Users/Alexd/PickHacks24/Sentinel-Scan/final_model.h5')
 
 @app.route('/upload-domain-list', methods=['POST'])

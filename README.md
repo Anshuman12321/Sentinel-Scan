@@ -1,4 +1,4 @@
 # Sentinel-Scan
 
-What is it?
+## What is it?
 An advanced, AI-powered website vulnerability assessment tool.

@@ -1,25 +1,31 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 import subprocess
-import os
+from tensorflow.keras.models import load_model
 
 app = Flask(__name__)
 
-@app.route('/process-url', methods=['POST'])
-def process_url():
-    content = request.json
-    url = content.get('url')
-    if not url:
-        return jsonify({'error': 'No URL provided'}), 400
+# Load TensorFlow model
+model = load_model('/mnt/c/Users/Alexd/PickHacks24/Sentinel-Scan/final_model.h5')
 
-    # Assuming the bash script 'data_collector.sh' is in the same directory
-    bash_script_path = os.path.join(os.getcwd(), 'data_collector.sh')
+@app.route('/upload-domain-list', methods=['POST'])
+def upload_domain_list():
+    if 'domain_list' not in request.files:
+        return jsonify({'message': 'No file part'}), 400
+    file = request.files['domain_list']
+    filepath = './temp_domain_list.txt'
+    file.save(filepath)
+    subprocess.run(['bash', 'path/to/data_collector.sh', filepath])
+    return jsonify({'message': 'Script executed'}), 200
 
-    try:
-        subprocess.run(['bash', bash_script_path, url], check=True)
-        return jsonify({'message': 'URL processed successfully', 'url': url})
-    except subprocess.CalledProcessError as e:
-        return jsonify({'error': f'Failed to process URL: {str(e)}'}), 500
+@app.route('/predict', methods=['POST'])
+def predict():
+    def predict():
+    data = request.json
+    input_data = np.array(data['input']) 
+    prediction = model.predict(input_data.reshape(1, -1))
+    return jsonify({'prediction': prediction.tolist()}), 200
+
+# Additional route for sentinel.py functionality
 
 if __name__ == '__main__':
     app.run(debug=True)
-

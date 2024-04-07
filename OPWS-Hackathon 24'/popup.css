@@ -44,7 +44,7 @@ button:hover {
     background-color: #0056b3;
 }
 
-#signUpContainer, #signInContainer, #questionnaire, #status {
+#signUpContainer, #signInContainer, #questionnaire, #status, #report, #optimize {
     background-color: #3c3a3a;
     padding: 60px;
     padding-top: 0px;

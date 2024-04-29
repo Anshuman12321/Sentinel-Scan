@@ -1,5 +1,5 @@
 # Sentinel-Scan
-
+WINNER OF THE 2024 PICKHACKS HACKATHON -- Award: Best use of MongoDB Atlas
 ## What is Sentinel Scan?
 An advanced, AI-powered website vulnerability assessment tool, all in a compact browser extension
 
